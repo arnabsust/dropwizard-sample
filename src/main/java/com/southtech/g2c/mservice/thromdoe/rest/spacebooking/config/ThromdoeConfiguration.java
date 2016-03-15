@@ -13,35 +13,9 @@ import javax.validation.constraints.NotNull;
  */
 public class ThromdoeConfiguration extends Configuration {
 
-    @NotEmpty
-    private String templateName;
-
-    @NotEmpty
-    private String defaultName = "Stranger";
-
     @NotNull
     @Valid
     private DataSourceFactory dataSourceFactory = new DataSourceFactory();
-
-    @JsonProperty
-    public String getTemplateName() {
-        return templateName;
-    }
-
-    @JsonProperty
-    public void setTemplateName(String templateName) {
-        this.templateName = templateName;
-    }
-
-    @JsonProperty
-    public String getDefaultName() {
-        return defaultName;
-    }
-
-    @JsonProperty
-    public void setDefaultName(String defaultName) {
-        this.defaultName = defaultName;
-    }
 
     @JsonProperty("database")
     public DataSourceFactory getDataSourceFactory() {

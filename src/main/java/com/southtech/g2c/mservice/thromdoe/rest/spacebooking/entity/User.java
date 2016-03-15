@@ -1,5 +1,7 @@
 package com.southtech.g2c.mservice.thromdoe.rest.spacebooking.entity;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.persistence.*;
 
 /**
@@ -10,9 +12,7 @@ import javax.persistence.*;
 @NamedQueries({
         @NamedQuery(name = "User.findAll",
         query = "select u from User u"),
-        @NamedQuery(name = "User.findById",
-                query = "select u from User u "
-                        + "where u.UserID = :userId ")
+        @NamedQuery(name = "User.findById", query = "select u.UserID, u.UserName, u.Email, u.ContactNo, u.Name, u.Address from User u where u.UserID = :userID")
 })
 public class User {
 
@@ -51,6 +51,7 @@ public class User {
         Address = address;
     }
 
+    @JsonProperty
     public int getUserID() {
         return UserID;
     }
@@ -59,6 +60,7 @@ public class User {
         UserID = userID;
     }
 
+    @JsonProperty
     public String getUserName() {
         return UserName;
     }
@@ -67,6 +69,7 @@ public class User {
         UserName = userName;
     }
 
+    @JsonProperty
     public String getPassword() {
         return Password;
     }
@@ -75,6 +78,7 @@ public class User {
         Password = password;
     }
 
+    @JsonProperty
     public String getEmail() {
         return Email;
     }
@@ -83,6 +87,7 @@ public class User {
         Email = email;
     }
 
+    @JsonProperty
     public String getContactNo() {
         return ContactNo;
     }
@@ -91,6 +96,7 @@ public class User {
         ContactNo = contactNo;
     }
 
+    @JsonProperty
     public String getName() {
         return Name;
     }
@@ -99,6 +105,7 @@ public class User {
         Name = name;
     }
 
+    @JsonProperty
     public String getAddress() {
         return Address;
     }

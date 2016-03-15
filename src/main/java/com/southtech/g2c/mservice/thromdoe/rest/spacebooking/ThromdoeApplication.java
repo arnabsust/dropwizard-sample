@@ -50,13 +50,9 @@ public class ThromdoeApplication extends Application<ThromdoeConfiguration> {
     @Override
     public void run(ThromdoeConfiguration thromdoeConfiguration, Environment environment) throws Exception {
 
-        //Create Employee DAO.
+        //Create User DAO.
         final UserDao userDao
                 = new UserDao(hibernateBundle.getSessionFactory());
-
-        final TemplateHealthCheck healthCheck =
-                new TemplateHealthCheck(thromdoeConfiguration.getTemplateName());
-        environment.healthChecks().register("template", healthCheck);
 
         environment.jersey().register(new UserResource(userDao));
 
