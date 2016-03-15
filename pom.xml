@@ -4,8 +4,8 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.southtech</groupId>
-    <artifactId>rest</artifactId>
+    <groupId>com.southtech.g2c.mservice</groupId>
+    <artifactId>thromdoe</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 
     <dependencies>
@@ -13,6 +13,18 @@
             <groupId>io.dropwizard</groupId>
             <artifactId>dropwizard-core</artifactId>
             <version>0.9.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.dropwizard</groupId>
+            <artifactId>dropwizard-hibernate</artifactId>
+            <version>0.9.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>5.1.38</version>
         </dependency>
     </dependencies>
 
@@ -45,7 +57,7 @@
                             <transformers>
                                 <transformer implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>
                                 <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                    <mainClass>com.southtech.sample.HelloWorldApplication</mainClass>
+                                    <mainClass>com.southtech.g2c.mservice.thromdoe.rest.spacebooking.ThromdoeApplication</mainClass>
                                 </transformer>
                             </transformers>
                         </configuration>

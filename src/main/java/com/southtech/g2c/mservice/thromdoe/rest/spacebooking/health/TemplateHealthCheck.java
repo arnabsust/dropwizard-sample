@@ -1,4 +1,4 @@
-package com.southtech.sample.health;
+package com.southtech.g2c.mservice.thromdoe.rest.spacebooking.health;
 
 import com.codahale.metrics.health.HealthCheck;
 

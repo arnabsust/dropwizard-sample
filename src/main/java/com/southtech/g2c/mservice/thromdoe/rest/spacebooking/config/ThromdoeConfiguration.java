@@ -1,19 +1,27 @@
-package com.southtech.sample.config;
+package com.southtech.g2c.mservice.thromdoe.rest.spacebooking.config;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.dropwizard.Configuration;
+import io.dropwizard.db.DataSourceFactory;
 import org.hibernate.validator.constraints.NotEmpty;
+
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 
 /**
  * Created by hasib on 14-Mar-16.
  */
-public class HelloWorldConfiguration extends Configuration {
+public class ThromdoeConfiguration extends Configuration {
 
     @NotEmpty
     private String templateName;
 
     @NotEmpty
     private String defaultName = "Stranger";
+
+    @NotNull
+    @Valid
+    private DataSourceFactory dataSourceFactory = new DataSourceFactory();
 
     @JsonProperty
     public String getTemplateName() {
@@ -33,5 +41,10 @@ public class HelloWorldConfiguration extends Configuration {
     @JsonProperty
     public void setDefaultName(String defaultName) {
         this.defaultName = defaultName;
+    }
+
+    @JsonProperty("database")
+    public DataSourceFactory getDataSourceFactory() {
+        return dataSourceFactory;
     }
 }
