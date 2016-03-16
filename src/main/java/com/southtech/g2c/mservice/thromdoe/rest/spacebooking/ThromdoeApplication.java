@@ -1,9 +1,11 @@
 package com.southtech.g2c.mservice.thromdoe.rest.spacebooking;
 
 import com.southtech.g2c.mservice.thromdoe.rest.spacebooking.config.ThromdoeConfiguration;
+import com.southtech.g2c.mservice.thromdoe.rest.spacebooking.dao.BookingDao;
 import com.southtech.g2c.mservice.thromdoe.rest.spacebooking.dao.UserDao;
 import com.southtech.g2c.mservice.thromdoe.rest.spacebooking.entity.*;
 import com.southtech.g2c.mservice.thromdoe.rest.spacebooking.health.TemplateHealthCheck;
+import com.southtech.g2c.mservice.thromdoe.rest.spacebooking.resources.BookingResource;
 import com.southtech.g2c.mservice.thromdoe.rest.spacebooking.resources.UserResource;
 import io.dropwizard.Application;
 import io.dropwizard.db.DataSourceFactory;
@@ -54,7 +56,10 @@ public class ThromdoeApplication extends Application<ThromdoeConfiguration> {
         final UserDao userDao
                 = new UserDao(hibernateBundle.getSessionFactory());
 
+        final BookingDao bookingDao = new BookingDao(hibernateBundle.getSessionFactory());
+
         environment.jersey().register(new UserResource(userDao));
+        environment.jersey().register(new BookingResource(bookingDao));
 
     }
 }
