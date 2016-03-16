@@ -3,6 +3,7 @@ package com.southtech.g2c.mservice.thromdoe.rest.spacebooking.entity;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
+import java.util.List;
 
 /**
  * Created by hasib on 15-Mar-16.
@@ -11,7 +12,7 @@ import javax.persistence.*;
 @Table(name = "users")
 @NamedQueries({
         @NamedQuery(name = "User.findAll",
-        query = "select u from User u"),
+        query = "from User u join u.userRoles"),
         @NamedQuery(name = "User.findById", query = "select u.UserID, u.UserName, u.Email, u.ContactNo, u.Name, u.Address from User u where u.UserID = :userID")
 })
 public class User {
@@ -38,6 +39,15 @@ public class User {
 
     @Column(name="address")
     private String Address;
+
+    @OneToMany(targetEntity = UserRole.class, mappedBy = "user")
+    private List<UserRole> userRoles;
+
+    @OneToMany(targetEntity = Booking.class, mappedBy = "user")
+    private List<Booking> bookings;
+
+    @OneToMany(targetEntity = Notification.class, mappedBy = "user")
+    private List<Notification> notifications;
 
     public User() {
     }
@@ -112,5 +122,29 @@ public class User {
 
     public void setAddress(String address) {
         Address = address;
+    }
+
+    public List<UserRole> getUserRoles() {
+        return userRoles;
+    }
+
+    public void setUserRoles(List<UserRole> userRoles) {
+        this.userRoles = userRoles;
+    }
+
+    public List<Booking> getBookings() {
+        return bookings;
+    }
+
+    public void setBookings(List<Booking> bookings) {
+        this.bookings = bookings;
+    }
+
+    public List<Notification> getNotifications() {
+        return notifications;
+    }
+
+    public void setNotifications(List<Notification> notifications) {
+        this.notifications = notifications;
     }
 }
