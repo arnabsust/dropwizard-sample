@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 16, 2016 at 12:38 PM
+-- Generation Time: Mar 20, 2016 at 11:57 AM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -40,7 +40,18 @@ CREATE TABLE IF NOT EXISTS `bookings` (
   `userid` int(11) NOT NULL,
   PRIMARY KEY (`bookingid`),
   KEY `userid` (`userid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
+
+--
+-- Dumping data for table `bookings`
+--
+
+INSERT INTO `bookings` (`bookingid`, `bookingdate`, `bookingname`, `bookinglocation`, `bookingreason`, `contactno`, `remarks`, `status`, `startdate`, `enddate`, `userid`) VALUES
+(1, '2016-03-01 00:00:00', 'abc', 'uttara', 'N/A', '+880161982985', 'aaaaaaaaa', 1, '2016-03-09 00:00:00', '2016-03-31 00:00:00', 1),
+(2, '2016-03-02 00:00:00', 'def', 'uttara', 'N/A', '+8801611982985', 'asas', 1, '2016-03-01 00:00:00', '2016-03-31 00:00:00', 1),
+(3, '2016-03-03 00:00:00', 'xyz', 'uttara', 'N/A', '+8801611982985', 'N/A', 1, '2016-03-01 00:00:00', '2016-03-31 00:00:00', 1),
+(4, '2016-03-03 00:00:00', 'jkl', 'dhanmondi', 'N/A', '+8801611982985', 'qqqqqqq', 1, '2016-03-16 00:00:00', '2016-03-31 00:00:00', 1),
+(5, '2016-03-02 00:00:00', 'mno', 'uttara', 'N/A', '+8801790444437', 'asasasas', 1, '2016-03-02 00:00:00', '2016-03-31 00:00:00', 2);
 
 -- --------------------------------------------------------
 
@@ -140,8 +151,8 @@ ALTER TABLE `bookings`
 -- Constraints for table `userroles`
 --
 ALTER TABLE `userroles`
-  ADD CONSTRAINT `fk_userroles_users` FOREIGN KEY (`userid`) REFERENCES `users` (`userid`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `fk_userroles_roles` FOREIGN KEY (`roleid`) REFERENCES `roles` (`roleid`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `fk_userroles_roles` FOREIGN KEY (`roleid`) REFERENCES `roles` (`roleid`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_userroles_users` FOREIGN KEY (`userid`) REFERENCES `users` (`userid`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

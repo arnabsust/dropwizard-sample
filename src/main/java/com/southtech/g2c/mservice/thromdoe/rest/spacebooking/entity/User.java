@@ -12,7 +12,7 @@ import java.util.List;
 @Table(name = "users")
 @NamedQueries({
         @NamedQuery(name = "User.findAll",
-        query = "from User u join u.userRoles"),
+        query = "from User u"),
         @NamedQuery(name = "User.findById", query = "select u.UserID, u.UserName, u.Email, u.ContactNo, u.Name, u.Address from User u where u.UserID = :userID")
 })
 public class User {

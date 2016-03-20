@@ -5,10 +5,9 @@ import com.southtech.g2c.mservice.thromdoe.rest.spacebooking.entity.Booking;
 import com.southtech.g2c.mservice.thromdoe.rest.spacebooking.entity.User;
 import io.dropwizard.hibernate.UnitOfWork;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -25,7 +24,18 @@ public class BookingResource {
 
     @GET
     @UnitOfWork
-    public List<Booking> findAll(){
+    public List<Booking> findAll() {
         return bookingDao.findAll();
+    }
+
+    @GET
+    @UnitOfWork
+    @Path("/getbydatelocationuser")
+    public List<Booking> findAll(
+            @QueryParam("fromDate") String fromDate,
+            @QueryParam("toDate") String toDate,
+            @QueryParam("location") String location,
+            @QueryParam("userID") int userID) {
+        return bookingDao.findAll(new Date(fromDate), new Date(toDate), location, userID);
     }
 }

@@ -9,7 +9,8 @@ import java.util.Date;
 @Entity
 @Table(name = "bookings")
 @NamedQueries({
-        @NamedQuery(name = "Booking.findAll", query = "select b from Booking b")
+        @NamedQuery(name = "Booking.findAll", query = "from Booking b"),
+        @NamedQuery(name = "Booking.findByDateLocationUser", query = "from Booking b where b.BookingDate >= :fromDate and b.BookingDate <= :toDate and b.BookingLocation = :location and b.UserID = :userID")
 })
 public class Booking {
 
